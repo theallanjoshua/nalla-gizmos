@@ -1,0 +1,30 @@
+{
+	"name": "nalla-gizmos",
+	"type": "module",
+	"private": true,
+	"packageManager": "pnpm@10.31.0",
+	"scripts": {
+		"clean": "turbo clean",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"lint:fix": "turbo lint:fix",
+		"check-types": "turbo check-types",
+		"build": "turbo build",
+		"validate": "turbo validate",
+		"prepare": "test -z \"$CI\" && husky || true"
+	},
+	"devDependencies": {
+		"@types/chrome": "^0.1.37",
+		"@types/har-format": "^1.2.16",
+		"@types/node": "^25.3.3",
+		"@types/react": "^19.1.8",
+		"@types/react-dom": "^19.1.6",
+		"eslint": "^9.39.3",
+		"husky": "^9.1.7",
+		"jiti": "^2.6.1",
+		"sass": "^1.89.2",
+		"turbo": "^2.8.13",
+		"typescript": "~5.8.3",
+		"vite": "^7.0.4"
+	}
+}

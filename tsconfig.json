@@ -1,0 +1,7 @@
+{
+	"extends": "./gizmos/helpers/dev/lib/tsconfigs/base.json",
+	"references": [
+		{ "path": "./gizmos/helpers/dev" }
+	],
+	"files": []
+}

@@ -1,0 +1,9 @@
+{
+	"extends": "./lib/tsconfigs/lib.json",
+	"compilerOptions": {
+		"paths": {
+			"~/*": ["./lib/*"]
+		}
+	},
+	"include": ["lib"]
+}
