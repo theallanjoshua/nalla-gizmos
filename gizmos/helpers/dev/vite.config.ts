@@ -7,10 +7,4 @@ export default setupViteForNodeLibrary({
 		index: './lib/index.ts',
 	},
 	peerDependencies: Object.keys(packageJson.peerDependencies),
-	copyDirs: [
-		{
-			src: './lib/tsconfigs',
-			dest: './dist/tsconfigs',
-		},
-	],
 });

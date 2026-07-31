@@ -1,5 +1,5 @@
 {
-	"name": "@nalla-gizmos/helpers/dev",
+	"name": "@nalla-gizmos/helpers-dev",
 	"type": "module",
 	"version": "0.1.0",
 	"description": "Development utilities & tooling for Nalla Gizmos",
@@ -29,14 +29,17 @@
 		"access": "public"
 	},
 	"exports": {
-		"./tsconfigs/*": "./dist/tsconfigs/*",
 		".": {
 			"types": "./dist/lib/index.d.ts",
 			"import": "./dist/index.js"
-		}
+		},
+		"./tsconfigs/*": "./tsconfigs/*"
 	},
+	"main": "dist/index.js",
+	"types": "dist/lib/index.d.ts",
 	"files": [
-		"dist"
+		"dist",
+		"tsconfigs"
 	],
 	"scripts": {
 		"clean": "rm -rf dist",

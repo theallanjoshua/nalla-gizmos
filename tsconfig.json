@@ -1,7 +1,4 @@
 {
-	"extends": "./gizmos/helpers/dev/lib/tsconfigs/base.json",
-	"references": [
-		{ "path": "./gizmos/helpers/dev" }
-	],
-	"files": []
+	"extends": "./gizmos/helpers/dev/tsconfigs/lib.json",
+	"include": ["eslint.config.ts", "gizmos/*/*/vite.config.ts"]
 }

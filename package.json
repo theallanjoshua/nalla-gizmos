@@ -11,9 +11,11 @@
 		"check-types": "turbo check-types",
 		"build": "turbo build",
 		"validate": "turbo validate",
-		"prepare": "test -z \"$CI\" && husky || true"
+		"prepare": "test -z \"$CI\" && husky || true",
+		"postinstall": "pnpm --filter @nalla-gizmos/helpers-dev build"
 	},
 	"devDependencies": {
+		"@nalla-gizmos/helpers-dev": "workspace:*",
 		"@types/chrome": "^0.1.37",
 		"@types/har-format": "^1.2.16",
 		"@types/node": "^25.3.3",

@@ -5,14 +5,16 @@
 			"cache": false
 		},
 		"lint": {
-			"cache": true
+			"cache": true,
+			"dependsOn": ["^build"]
 		},
 		"lint:fix": {
-			"cache": false
+			"cache": false,
+			"dependsOn": ["^build"]
 		},
 		"check-types": {
 			"cache": true,
-			"dependsOn": ["^check-types"]
+			"dependsOn": ["^build", "^check-types"]
 		},
 		"dev": {
 			"cache": false,

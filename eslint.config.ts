@@ -1,13 +1,18 @@
 import { resolve } from 'node:path';
-import { setupESlint } from './gizmos/helpers/dev/lib/linters/eslint';
-import tsconfig from './tsconfig.json' with { type: 'json' };
+import { globSync } from 'node:fs';
+import { setupESlint } from '@nalla-gizmos/helpers-dev';
 
-const pathToTSConfigs = tsconfig.references.map(({ path }) => resolve(__dirname, path, 'tsconfig.json'));
+const packageGlob = 'gizmos/*/*';
+
+const pathToTSConfigs = globSync(`${packageGlob}/tsconfig.json`, {
+    cwd: __dirname,
+    exclude: ['**/node_modules/**', '**/dist/**'],
+}).map((p) => resolve(__dirname, p));
 
 export default setupESlint({
-	pathToTSConfigs: [resolve(__dirname, './tsconfig.dev.json'), ...pathToTSConfigs],
+	pathToTSConfigs: [resolve(__dirname, './tsconfig.json'), ...pathToTSConfigs],
 	internalImportsPathAliases: ['@nalla-gizmos', '~'],
-	productionFilesGlobPattern: 'gizmos/*/*/{lib,src}/**/*.{ts,tsx}',
+	productionFilesGlobPattern: `${packageGlob}/{lib,src}/**/*.{ts,tsx}`,
 	testsDirName: '__tests__',
 	disallowedProductionImportsGlobPatterns: [
 		'test/**/*',
