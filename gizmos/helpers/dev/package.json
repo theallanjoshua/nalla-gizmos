@@ -48,7 +48,7 @@
 		"check-types": "tsc --noEmit",
 		"dev": "vite build --watch",
 		"build": "vite build",
-		"validate": "pnpm clean && pnpm lint && pnpm check-types && pnpm build",
+		"validate": "pnpm clean && pnpm build && pnpm lint && pnpm check-types",
 		"prepublishOnly": "pnpm validate"
 	},
 	"peerDependencies": {
