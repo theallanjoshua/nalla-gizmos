@@ -2,7 +2,6 @@
 	"name": "@nalla-gizmos/helpers-dev",
 	"type": "module",
 	"version": "0.1.0",
-	"description": "Development utilities & tooling for Nalla Gizmos",
 	"author": "Allan Joshua",
 	"license": "MIT",
 	"homepage": "https://github.com/theallanjoshua/nalla-gizmos/tree/main/gizmos/helpers/dev#readme",

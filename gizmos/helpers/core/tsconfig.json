@@ -1,5 +1,5 @@
 {
-	"extends": "@nalla-gizmos/helpers-dev/tsconfigs/lib.json",
+	"extends": "@nalla-gizmos/helpers-dev/tsconfigs/node.json",
 	"compilerOptions": {
 		"paths": {
 			"~/*": ["./lib/*"]

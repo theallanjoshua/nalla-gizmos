@@ -1,4 +1,4 @@
-import type { PluginOption } from 'vite';
+import type { PluginOption, UserConfig } from 'vite';
 import { cpSync } from 'node:fs';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -22,6 +22,7 @@ export interface SetupViteForLibraryProps {
 	publicDir?: string;
 	copyDirs?: CopyDirsPluginProps;
 	isSSR?: boolean;
+	devServerPort?: number;
 }
 
 export function setupViteForLibrary(props: SetupViteForLibraryProps) {
@@ -30,42 +31,55 @@ export function setupViteForLibrary(props: SetupViteForLibraryProps) {
 		peerDependencies = [],
 		additionalPlugins = [],
 		publicDir,
-		isSSR,
 		copyDirs = [],
+		isSSR,
+		devServerPort,
 	} = props;
 
-	return defineConfig({
-		plugins: [
-			tsconfigPaths(),
-			dts(),
-			publicDir
-				? {
-						name: 'watch-public-dir',
-						buildStart() {
-							this.addWatchFile(publicDir);
-						},
-					}
-				: undefined,
-			copyDirsPlugin(copyDirs),
-			...additionalPlugins,
-		],
-		publicDir,
-		build: {
-			minify: true,
-			ssr: isSSR,
-			lib: {
-				entry: entries,
-				formats: ['es'],
-			},
-			rollupOptions: {
-				// Need this condition to match peerDependencies key (@cloudscape-design/components) to import path (@cloudscape-design/components/box)
-				external: (id) => peerDependencies.some((dep) => id.startsWith(dep)),
-				output: {
-					entryFileNames: '[name].js',
-					chunkFileNames: 'chunks/[name].js',
-					assetFileNames: 'assets/[name].[ext]',
-				},
-			},
+	const plugins: UserConfig['plugins'] = [
+		tsconfigPaths(),
+		dts(),
+		publicDir
+			? {
+					name: 'watch-public-dir',
+					buildStart() {
+						this.addWatchFile(publicDir);
+					},
+				}
+			: undefined,
+		copyDirsPlugin(copyDirs),
+		...additionalPlugins,
+	];
+
+	const rollupOptions = {
+		// Need this condition to match peerDependencies key (@cloudscape-design/components) to import path (@cloudscape-design/components/box)
+		external: (id: string) => peerDependencies.some((dep) => id.startsWith(dep)),
+		output: {
+			entryFileNames: '[name].js',
+			chunkFileNames: 'chunks/[name].js',
+			assetFileNames: 'assets/[name].[ext]',
 		},
+	};
+
+	const build: UserConfig['build'] = {
+		minify: true,
+		ssr: isSSR,
+		lib: {
+			entry: entries,
+			formats: ['es'],
+		},
+		rollupOptions,
+	};
+
+	const server = devServerPort && {
+		port: devServerPort,
+		strictPort: true, // Fail if port if unavailable
+	};
+
+	return defineConfig({
+		plugins,
+		publicDir,
+		build,
+		...server,
 	});
 }

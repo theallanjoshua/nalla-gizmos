@@ -1,8 +1,7 @@
 {
-	"extends": "./lib.json",
+	"extends": "./bundler.json",
 	"compilerOptions": {
 		"jsx": "react-jsx",
-		"lib": ["es2022", "dom", "dom.iterable"],
-		"types": ["vite/client"]
+		"lib": ["es2022", "dom", "dom.iterable"]
 	}
 }

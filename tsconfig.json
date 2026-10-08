@@ -1,4 +1,4 @@
 {
-	"extends": "./gizmos/helpers/dev/tsconfigs/lib.json",
+	"extends": "./gizmos/helpers/dev/tsconfigs/node.json",
 	"include": ["eslint.config.ts", "gizmos/*/*/vite.config.ts"]
 }

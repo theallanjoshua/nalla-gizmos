@@ -1,12 +1,12 @@
-import { resolve } from 'node:path';
 import { globSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { setupESlint } from '@nalla-gizmos/helpers-dev';
 
 const packageGlob = 'gizmos/*/*';
 
 const pathToTSConfigs = globSync(`${packageGlob}/tsconfig.json`, {
-    cwd: __dirname,
-    exclude: ['**/node_modules/**', '**/dist/**'],
+	cwd: __dirname,
+	exclude: ['**/node_modules/**', '**/dist/**'],
 }).map((p) => resolve(__dirname, p));
 
 export default setupESlint({

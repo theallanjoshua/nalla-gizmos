@@ -1,0 +1,6 @@
+{
+	"extends": "./bundler.json",
+	"compilerOptions": {
+		"types": ["vite/client", "node"]
+	}
+}

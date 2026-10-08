@@ -1,22 +1,18 @@
 {
-	"name": "@nalla-gizmos/helpers-core",
+	"name": "@nalla-gizmos/helpers-react",
 	"type": "module",
 	"version": "0.1.0",
 	"author": "Allan Joshua",
 	"license": "MIT",
-	"homepage": "https://github.com/theallanjoshua/nalla-gizmos/tree/main/gizmos/helpers/core#readme",
+	"homepage": "https://github.com/theallanjoshua/nalla-gizmos/tree/main/gizmos/helpers/react#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/theallanjoshua/nalla-gizmos.git",
-		"directory": "gizmos/helpers/core"
+		"directory": "gizmos/helpers/react"
 	},
 	"bugs": {
 		"url": "https://github.com/theallanjoshua/nalla-gizmos/issues"
 	},
-	"keywords": [
-		"nalla-gizmos",
-		"utilities"
-	],
 	"publishConfig": {
 		"access": "public"
 	},
@@ -40,6 +36,7 @@
 		"prepublishOnly": "pnpm validate"
 	},
 	"devDependencies": {
-		"@nalla-gizmos/helpers-dev": "workspace:*"
+		"@nalla-gizmos/helpers-dev": "workspace:*",
+		"antd": "^6.6.2"
 	}
 }
